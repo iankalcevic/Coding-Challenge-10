@@ -72,6 +72,17 @@ class Inventory {
             return 'Low Stock! ${product.name} is ${product.stock}'; //Unavailable due to low stock message
         }; //Create and add order if stock is available
     };
+
+    listOrders() { //Task 4 update
+        this.orders.forEach(order => console.log(order.getOrderDetails())); 
+    }; //Log placed orders
+
+    restockProduct(productId, quantity) { //Task 5 update
+        let product = this.products.find(product => product.id === productId);
+        if (product) {
+            product.stock += quantity; //Increase product stock
+        };
+    };
 };
 
 const inventory = new Inventory();
