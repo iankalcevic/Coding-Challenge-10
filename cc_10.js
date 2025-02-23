@@ -47,3 +47,34 @@ console.log(order1.getOrderDetails());
 
 console.log(prod1.getDetails()); 
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5" (Stock reduced)
+
+// Task 3 - Creating an inventory class
+
+class Inventory {
+    constructor() {
+        this.products = [];
+        this.orders = []; //Task 4 - add order array in inventory class
+    };
+
+    addProduct(product) {
+        this.products.push(product);
+    }; //Add new product to inventory
+
+    listProducts() {
+        return this.products.forEach(product => console.log(product.getDetails()));
+    }; //Log product details
+
+    placeOrder(orderId, product, quantity) {
+        if (product.stock >= quantity) {
+            let order = new Order(orderId, product, quantity);
+            this.order.push(order);
+        } else {
+            return 'Low Stock! ${product.name} is ${product.stock}'; //Unavailable due to low stock message
+        }; //Create and add order if stock is available
+    };
+};
+
+const inventory = new Inventory();
+inventory.addProduct(prod1);
+inventory.listProducts();
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
